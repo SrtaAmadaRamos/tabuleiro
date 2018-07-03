@@ -7,28 +7,49 @@ int main(){
     
     char matriz[COMP][COMP];
     int posicao[2];
+    char op;
     
-    
-    for(int i = 0; i < COMP; i++){
-        for(int j = 0; j < COMP; j++){
-            matriz[i][j] = ' ';
-        }
-    }    
-    
-    matriz[2][2] = '*';
-    
-    paraCimahey(matriz, posicao); // Teste de funcionamento da função
+    inicializarMatriz(matriz);
+    limparTela();
+    int a = 1;
+    while(a){\
+        imprimiMatriz(matriz);
+        op = getch();
+        switch(op){
+            case 'w':
+            case 'W': 
+              paraCimahey(matriz,posicao);
+              limparTela();
+              break;
+            case 's':
+            case 'S':
+              paraBaixohey(matriz,posicao);
+              limparTela();
+              break;
+            case 'a':
+            case 'A': 
+              paraEsquerdahey(matriz,posicao);
+              limparTela();
+              break;
+            case 'd':
+            case 'D': 
+              paraDireitahey(matriz,posicao);
+              limparTela();
+              break;
+            case 'q':
+            case 'Q': 
+               a = 0;
+              break;
+            default:
+                limparTela();
+                printf("Tecla inválida\n");
+                printf("(Tecla W) Para cima\n");
+                printf("(Tecla A) Para esquerda\n");
+                printf("(Tecla S) Para baixo\n");
+                printf("(Tecla D) Para direita\n\n");
+       }
+       
+   } 
+  
 
-    for(int i = 0; i < COMP; i++){ //colunas
-        printf("|");
-        for(int j = 0; j < COMP; j++){               //barrinha no inicio e
-            printf(" %c ", matriz[i][j]);           //fim de cada linha
-        }
-        printf("|\n");
-    }    
-    
-    return 1;
-    
 }
-
-
